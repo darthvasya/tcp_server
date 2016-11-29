@@ -40,8 +40,8 @@ namespace chat_server.BLL.Implementations
                     TcpClient tcpClient = tcpListener.AcceptTcpClient();
 
                     ClientObject clientObject = new ClientObject(tcpClient, this);
-                    //Thread clientThread = new Thread(new ThreadStart(clientObject.Process));
-                    //clientThread.Start();
+                    Thread clientThread = new Thread(new ThreadStart(clientObject.Process));
+                    clientThread.Start();
                 }
 
             }
