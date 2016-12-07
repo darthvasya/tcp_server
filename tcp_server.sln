@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcp_server", "tcp_server\tc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chat_server.BLL", "chat_server.BLL\chat_server.BLL.csproj", "{406FF436-0F1D-42E0-9445-178355A08EBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tank_game.Model", "tank_game.Model\tank_game.Model.csproj", "{AEC65C10-AA73-4E53-8926-8BA7E5D5EDDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "parser", "parser\parser.csproj", "{37353747-33C5-457C-98DB-6E0F9168F9C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{406FF436-0F1D-42E0-9445-178355A08EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{406FF436-0F1D-42E0-9445-178355A08EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{406FF436-0F1D-42E0-9445-178355A08EBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC65C10-AA73-4E53-8926-8BA7E5D5EDDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC65C10-AA73-4E53-8926-8BA7E5D5EDDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC65C10-AA73-4E53-8926-8BA7E5D5EDDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC65C10-AA73-4E53-8926-8BA7E5D5EDDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37353747-33C5-457C-98DB-6E0F9168F9C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37353747-33C5-457C-98DB-6E0F9168F9C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37353747-33C5-457C-98DB-6E0F9168F9C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37353747-33C5-457C-98DB-6E0F9168F9C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

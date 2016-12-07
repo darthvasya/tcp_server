@@ -13,11 +13,36 @@ namespace chat_server.BLL.Implementations
     public class ServerObject : IServerObject
     {
         static TcpListener tcpListener;
+        
         List<ClientObject> clients = new List<ClientObject>();
+        List<Room> rooms = new List<Room>();
+
+        public ServerObject()
+        {
+            rooms.Add(new Room());
+        }
 
         public void AddConnection(ClientObject clientObject)
         {
+            bool makeNewRoom = true;
             clients.Add(clientObject);
+
+            foreach (Room room in rooms)
+            {
+                if (room.clients.Count == 1 || room.clients.Count == 0)
+                {
+                    room.AddConnection(clientObject);
+                    makeNewRoom = false;
+                    break;
+                }
+            }
+
+            if (makeNewRoom)
+            {
+                Room newRoom = new Room();
+                newRoom.AddConnection(clientObject);
+                rooms.Add(newRoom);
+            }
         }
 
         public void RemoveConnection(string id)
@@ -54,22 +79,31 @@ namespace chat_server.BLL.Implementations
 
         public void BroadcastMessage(string message, string id)
         {
-            byte[] data = Encoding.UTF8.GetBytes(message);
-            foreach (ClientObject client in clients)
+            string roomId = "";
+            foreach (Room room in rooms)
             {
+                foreach (ClientObject client in room.clients)
+                    if (client.Id == id)
+                        roomId = room.roomId;
+            }
+
+            Room roomCurrent = rooms.Where(p => p.roomId == roomId).FirstOrDefault();
+            foreach (ClientObject client in roomCurrent.clients)
+            {
+                byte[] data = Encoding.UTF8.GetBytes(roomCurrent.roomId + ". " + message);
                 if (client.Id != id)
                     client.Stream.Write(data, 0, data.Length);
             }
+
         }
 
         public void Disconnect()
         {
-            tcpListener.Stop();
+            //tcpListener.Stop();
 
             foreach (ClientObject client in clients)
-            //client.Close();
             {
-
+                client.Close();
             }
             
         }
